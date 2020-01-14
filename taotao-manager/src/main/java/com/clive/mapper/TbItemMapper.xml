@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.clive.mapper.TbItemMapper">
+	<select id="findTbItemById" parameterType="long" resultType="com.clive.bean.TbItem">
+		SELECT * FROM tbitem WHERE id = #{id}
+	</select>
+	<select id="findTbItemByPage" parameterType="Integer" resultType="com.clive.bean.TbItem">
+		SELECT * FROM tbitem LIMIT #{index},#{pageSize}
+	</select>
+	<select id="findAllCount"  resultType="Integer">
+		SELECT count(*) FROM tbitem
+	</select>
+	
+	<!-- 
+	<delete id="deleteItemById" >
+		UPDATE tbitem SET status=2
+		<where>
+			<foreach collection="ids" open="id in(" separator="," close=")" item="id">
+				#{id}
+			</foreach>
+		</where>
+	</delete>
+	
+	 -->
+	 <update id="updateItemById">
+	 	<if test="type==0">
+	 		UPDATE tbitem SET status=0,updated=#{date}
+	 		<where>
+				<foreach collection="ids" open="id in(" separator="," close=")" item="id">
+					#{id}
+				</foreach>
+		</where>
+	 	</if>
+	 	<if test="type==1">
+	 		UPDATE tbitem SET status=1,updated=#{date}
+	 		<where>
+				<foreach collection="ids" open="id in(" separator="," close=")" item="id">
+					#{id}
+				</foreach>
+		</where>
+	 	</if>
+	 	<if test="type==2">
+	 		UPDATE tbitem SET status=2,updated=#{date}
+	 		<where>
+				<foreach collection="ids" open="id in(" separator="," close=")" item="id">
+					#{id}
+				</foreach>
+		</where>
+	 	</if>
+	 </update> 
+	
+	 <select id="searchTbItem" resultType="com.clive.bean.TbItem">
+	 	SELECT * FROM tbitem  
+	 	<where>
+	 	<if test="price!=null and price==0">
+				and price BETWEEN 0 and 10000
+			</if>
+			<if test="price!=null and price==10000">
+				and price BETWEEN 10000 and 50000
+			</if>
+			<if test="price!=null and price==50000">
+				and price >50000
+	 	</if> 
+		<if test="title!=''">
+			AND title LIKE '%${title}%'
+		</if>
+		<if test="cId!=null">
+			AND cId = #{cId}
+		</if>
+		</where>
+		LIMIT #{page},#{limit}
+	 </select>
+	 <select id="searchCount" resultType="Integer" >
+	 	SELECT COUNT(*) FROM tbitem 
+	 	<where>
+	 		<if test="price!=null and price==0">
+				and price BETWEEN 0 and 10000
+			</if>
+			<if test="price!=null and price==10000">
+				and price BETWEEN 10000 and 50000
+			</if>
+			<if test="price!=null and price==50000">
+				and price >50000
+	 		</if> 
+			<if test="title!=''">
+				AND title LIKE '%${title}%'
+			</if>
+			<if test="cId!=null">
+				AND cId = #{cId}
+			</if>
+		</where>
+	 </select>
+	 <select id="showEchartsByCId" resultType="com.clive.bean.TbItem">
+	 	SELECT * FROM tbitem GROUP BY cId
+	 
+	 </select>
+	 <select id="findTbItemByCIdCount" parameterType="long" resultType="int">
+	 	SELECT COUNT(*) FROM tbitem WHERE cId =#{cId}  
+	 
+	 </select>
+</mapper>
