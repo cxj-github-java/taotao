@@ -206,7 +206,7 @@
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
         var myChart1 = echarts.init(document.getElementById('echartsMain1'));
-        
+        //测试使用的哈哈哈哈
         var weatherIcons = {
 
         };
