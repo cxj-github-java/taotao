@@ -7,7 +7,7 @@ public class PageController {
 	public String showIndex(){
 		return "index";
 	}
-	//啊啊啊啊啊啊啊
+	
 	//页面的controller，以/的话就跳首页
 	
 	 /* PageHelper.startPage(1,15);

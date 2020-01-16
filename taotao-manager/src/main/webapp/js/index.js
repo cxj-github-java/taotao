@@ -10,4 +10,7 @@ $(function() {
 	$("#addItemCat").click(function(){
 		$("#content").load("/jsp/addItemCat.jsp");
 	})
+	$("#addItem").click(function(){
+		$("#content").load("/jsp/addItem.jsp");
+	})
 })
