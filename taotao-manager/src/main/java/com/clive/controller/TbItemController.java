@@ -32,19 +32,10 @@ import com.clive.service.TbItemService;
 @Controller
 @RequestMapping("/item")
 public class TbItemController {
-	//@Value：注解是指为一个属性赋值，${}:根据key取value
-	@Value("${FTP_ADDRESS}")
-	private String FTP_ADDRESS;
-	@Value("${FTP_PORT}")
-	private Integer FTP_PORT;
-	@Value("${FTP_USERNAME}")
-	private String FTP_USERNAME;
-	@Value("${FTP_PASSWORD}")
-	private String FTP_PASSWORD;
-	@Value("${FILI_UPLOAD_PATH}")
-	private String FILI_UPLOAD_PATH;
-	@Value("${IMAGE_BASE_URL}")
-	private String IMAGE_BASE_URL;
+	/**
+	 * @Value：注解是指为一个属性赋值，${}:根据key取value
+	 * 	为一个属性赋值，
+	 */
 	@Autowired
 	private TbItemService tbItemService;
 	@RequestMapping("/{itemId}")
@@ -120,7 +111,7 @@ public class TbItemController {
 	@RequestMapping("/addItem")
 	@ResponseBody
 	public TaotaoResult addItem(TbItem item,String itemDesc){
-		TaotaoResult result = null;
+		TaotaoResult result = tbItemService.saveItem(item,itemDesc);
 		return result;
 	}
 }

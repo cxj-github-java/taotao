@@ -101,4 +101,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 	SELECT COUNT(*) FROM tbitem WHERE cId =#{cId}  
 	 
 	 </select>
+	 <insert id="saveItem" parameterType="com.clive.bean.TbItem">
+		INSERT INTO tbitem(id,title,sellPoint,price,num,barcode,image,cId,status,created,updated) VALUE(#{id},#{title},#{sellPoint},#{price},#{num},#{barcode},#{image},#{cId},#{status},#{created},#{updated})
+	</insert>
 </mapper>

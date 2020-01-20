@@ -136,7 +136,8 @@ layui核心思想：自动发起ajax请求，并且传入参数为json格式，�
 	存入mysql内
 主流服务器：腾讯，百度，华为，阿里云
 
-10.页面如何dug：debugger
+10.页面如何dug：
+	在有问题的代码前面加上debugger后运行，就可以了。
 	text和val都可以设置
 11.图片上传：
 	用户点击了多图片上传按钮后layui帮我们弹窗，选择图片，layui展示出来后ajax异步请求，
@@ -148,7 +149,15 @@ layui核心思想：自动发起ajax请求，并且传入参数为json格式，�
 12.虚拟机介绍：
 	在window上面安装vmare虚拟机，在里面安装linux，在安装图片服务器
 	安装过程：账号：root 密码：itcast  ifgonfig：内有端口号
+		端口号一般不变。
 	
+注意：所用软件的版本也需要注意比如jdk版本等。
+	导jar包等，或者用web包运行
+
+13.商品添加：
+	json格式的ajax请求，后回传一个信息给页面。
+	layui的from表单自带ajax请求。
+
 	
 	
 	

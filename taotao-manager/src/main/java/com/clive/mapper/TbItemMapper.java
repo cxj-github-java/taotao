@@ -25,5 +25,7 @@ public interface TbItemMapper {
 	List<TbItem> showEchartsByCId();
 	//根据分类id查询商品表中分类的商品数量
 	int findTbItemByCIdCount(@Param("cId")Long cId);
+	//添加商品基本信息。
+	int saveItem(TbItem item);
 	
 }
